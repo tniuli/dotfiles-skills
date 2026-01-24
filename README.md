@@ -1,6 +1,6 @@
 # dotfiles-skills
 
-个人 Agent Skills 集合，用于 Claude Code、Codex CLI 和 Cursor。
+个人 Agent Skills 集合，用于 Claude Code、Codex CLI、Cursor 和 Trae IDE。
 
 ## 快速安装
 
@@ -95,7 +95,7 @@ cd ~/dotfiles-skills
 
 ```
 dotfiles-skills/
-├── install.sh           # 安装脚本
+├── install.sh           # 一键安装脚本
 ├── README.md            # 本文件
 ├── .gitignore
 └── skills/              # 所有 skills
@@ -103,6 +103,15 @@ dotfiles-skills/
     ├── go-service-standards/
     ├── ...
     └── zustand-state-management/
+
+## 支持的平台
+
+| 平台 | 安装路径 |
+|------|----------|
+| Claude Code | `~/.claude/skills/` |
+| Codex CLI | `~/.codex/skills/` |
+| Cursor | `~/.cursor/skills/` |
+| Trae IDE | `~/.trae/skills/` |
 ```
 
 ## 更新 Skills

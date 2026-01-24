@@ -1,6 +1,6 @@
 #!/bin/bash
 # Agent Skills Installer
-# Installs skills to Claude, Codex, and Cursor global directories
+# Installs skills to Claude, Codex, Cursor, and Trae global directories
 
 set -e
 
@@ -11,6 +11,7 @@ SKILLS_DIR="$SCRIPT_DIR/skills"
 CLAUDE_DIR="$HOME/.claude/skills"
 CODEX_DIR="$HOME/.codex/skills"
 CURSOR_DIR="$HOME/.cursor/skills"
+TRAE_DIR="$HOME/.trae/skills"
 
 # Colors for output
 GREEN='\033[0;32m'
@@ -37,21 +38,27 @@ echo -e "${YELLOW}Found ${SKILL_COUNT} skills to install${NC}"
 echo
 
 # Install to Claude
-echo -e "${GREEN}[1/3]${NC} Installing to Claude (~/.claude/skills/)..."
+echo -e "${GREEN}[1/4]${NC} Installing to Claude (~/.claude/skills/)..."
 mkdir -p "$CLAUDE_DIR"
 rsync -av --delete --exclude='.DS_Store' "$SKILLS_DIR/" "$CLAUDE_DIR/" > /dev/null
 echo "      ✓ Done"
 
 # Install to Codex
-echo -e "${GREEN}[2/3]${NC} Installing to Codex (~/.codex/skills/)..."
+echo -e "${GREEN}[2/4]${NC} Installing to Codex (~/.codex/skills/)..."
 mkdir -p "$CODEX_DIR"
 rsync -av --delete --exclude='.DS_Store' --exclude='.system' "$SKILLS_DIR/" "$CODEX_DIR/" > /dev/null
 echo "      ✓ Done"
 
 # Install to Cursor
-echo -e "${GREEN}[3/3]${NC} Installing to Cursor (~/.cursor/skills/)..."
+echo -e "${GREEN}[3/4]${NC} Installing to Cursor (~/.cursor/skills/)..."
 mkdir -p "$CURSOR_DIR"
 rsync -av --delete --exclude='.DS_Store' "$SKILLS_DIR/" "$CURSOR_DIR/" > /dev/null
+echo "      ✓ Done"
+
+# Install to Trae
+echo -e "${GREEN}[4/4]${NC} Installing to Trae (~/.trae/skills/)..."
+mkdir -p "$TRAE_DIR"
+rsync -av --delete --exclude='.DS_Store' "$SKILLS_DIR/" "$TRAE_DIR/" > /dev/null
 echo "      ✓ Done"
 
 echo
@@ -63,5 +70,6 @@ echo "Skills installed to:"
 echo "  • Claude: $CLAUDE_DIR"
 echo "  • Codex:  $CODEX_DIR"
 echo "  • Cursor: $CURSOR_DIR"
+echo "  • Trae:   $TRAE_DIR"
 echo
 echo "Restart your AI coding assistants to load the new skills."
