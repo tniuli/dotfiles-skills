@@ -5,7 +5,7 @@
 ## 快速安装
 
 ```bash
-git clone git@github.com:YOUR_USERNAME/dotfiles-skills.git ~/dotfiles-skills
+git clone git@github.com:tniuli/dotfiles-skills.git ~/dotfiles-skills
 cd ~/dotfiles-skills
 ./install.sh
 ```
