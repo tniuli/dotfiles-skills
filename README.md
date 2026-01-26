@@ -1,6 +1,6 @@
 # dotfiles-skills
 
-个人 Agent Skills 集合，用于 Claude Code、Codex CLI、Cursor 和 Trae IDE。
+个人 Agent Skills 集合，用于 Claude Code、Codex CLI、Cursor、Trae IDE 和 Google Antigravity。
 
 ## 快速安装
 
@@ -33,6 +33,7 @@ cd ~/dotfiles-skills
 | `zustand-state-management` | Zustand 状态管理 |
 | `react-hook-form-zod` | 表单处理与验证 |
 | `motion` | Framer Motion 动画 |
+| `mui` | Material UI 组件库 |
 
 ### 后端开发 (Backend)
 
@@ -43,6 +44,9 @@ cd ~/dotfiles-skills
 | `nodejs` | Node.js 开发模式 |
 | `prisma` | Prisma ORM |
 | `hono-routing` | Hono 路由框架 |
+| `python-patterns` | Python 编程模式 |
+| `database-design` | 数据库设计最佳实践 |
+| `docker-expert` | Docker 容器化专家 |
 
 ### 身份验证 (Authentication)
 
@@ -70,6 +74,13 @@ cd ~/dotfiles-skills
 | `playwright-local` | E2E 测试 |
 | `webapp-testing` | Web 应用测试 |
 | `mcp-builder` | MCP 服务器构建 |
+| `clean-code` | 代码整洁之道 |
+| `code-review-checklist` | 代码审查清单 |
+| `systematic-debugging` | 系统化调试方法 |
+| `performance-profiling` | 性能分析与优化 |
+| `git-pushing` | Git 提交规范与流程 |
+| `api-security-best-practices` | API 安全最佳实践 |
+| `typescript-expert` | TypeScript 专家指南 |
 
 ### 文档处理 (Documents)
 
@@ -90,6 +101,12 @@ cd ~/dotfiles-skills
 | `frontend-design` | 前端设计 |
 | `brand-guidelines` | 品牌指南 |
 | `slack-gif-creator` | Slack GIF 创建 |
+
+### 通用配置 (General)
+
+| Skill | 描述 |
+|-------|------|
+| `chinese-default` | 中文环境默认配置 |
 
 ## 目录结构
 
@@ -112,6 +129,7 @@ dotfiles-skills/
 | Codex CLI | `~/.codex/skills/` |
 | Cursor | `~/.cursor/skills/` |
 | Trae IDE | `~/.trae/skills/` |
+| Google Antigravity | `~/.gemini/antigravity/skills/` |
 ```
 
 ## 更新 Skills
@@ -147,6 +165,7 @@ git push
 - [jezweb/claude-skills](https://github.com/jezweb/claude-skills) - 87个生产级 skills
 - [mblode/agent-skills](https://github.com/mblode/agent-skills) - UI/前端质量 skills
 - [blencorp/claude-code-kit](https://github.com/blencorp/claude-code-kit) - 框架 kits
+- [sickn33/antigravity-awesome-skills](https://github.com/sickn33/antigravity-awesome-skills) - 200+ Agent Skills
 
 ## 许可证
 
