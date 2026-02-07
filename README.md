@@ -70,6 +70,7 @@ npx skills add tniuli/dotfiles-skills --list
 | `react-hook-form-zod` | 表单处理与验证 |
 | `motion` | Framer Motion 动画 |
 | `mui` | Material UI 组件库 |
+| `ui-ux-pro-max` | 智能 UI/UX 设计系统生成器 |
 
 ### 后端开发 (Backend)
 
@@ -203,6 +204,7 @@ git push
 - [blencorp/claude-code-kit](https://github.com/blencorp/claude-code-kit) - 框架 kits
 - [sickn33/antigravity-awesome-skills](https://github.com/sickn33/antigravity-awesome-skills) - 200+ Agent Skills
 - [openclaw/skills](https://github.com/openclaw/skills) - Clawdhub.com 归档（海量 Skills）
+- [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) - UI/UX 设计智能 Skill
 
 ## 许可证
 

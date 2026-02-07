@@ -70,6 +70,7 @@ npx skills add tniuli/dotfiles-skills --list
 | `react-hook-form-zod` | Form handling and validation |
 | `motion` | Framer Motion animations |
 | `mui` | Material UI component library |
+| `ui-ux-pro-max` | Intelligent UI/UX Design System Generator |
 
 ### Backend
 
@@ -204,6 +205,7 @@ This repository integrates excellent Agent Skills from:
 - [blencorp/claude-code-kit](https://github.com/blencorp/claude-code-kit) - Framework kits
 - [sickn33/antigravity-awesome-skills](https://github.com/sickn33/antigravity-awesome-skills) - 200+ Agent Skills
 - [openclaw/skills](https://github.com/openclaw/skills) - Clawdhub.com archive (Huge collection)
+- [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) - UI/UX Design Intelligence Skill
 
 ## License
 
