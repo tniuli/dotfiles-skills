@@ -1,0 +1,31 @@
+{
+  "name": "dotfiles-skills",
+  "version": "1.0.0",
+  "description": "Personal collection of AI agent skills with installation scripts",
+  "main": "install.sh",
+  "scripts": {
+    "install": "./install.sh",
+    "skills:list": "npx skills list",
+    "skills:find": "npx skills find",
+    "skills:update": "npx skills update",
+    "skills:check": "npx skills check"
+  },
+  "keywords": [
+    "ai",
+    "skills",
+    "agent",
+    "claude",
+    "cursor",
+    "codex",
+    "trae",
+    "antigravity"
+  ],
+  "author": "Hanqing",
+  "license": "MIT",
+  "devDependencies": {
+    "@vercel-labs/skills": "latest"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

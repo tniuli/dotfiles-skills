@@ -4,10 +4,44 @@
 
 ## 快速安装
 
+### 方法一：使用安装脚本（推荐）
+
 ```bash
 git clone git@github.com:tniuli/dotfiles-skills.git ~/dotfiles-skills
 cd ~/dotfiles-skills
 ./install.sh
+```
+
+### 方法二：使用 Skills CLI
+
+```bash
+# 安装 Vercel Labs Skills CLI
+npm install -g @vercel-labs/skills
+
+# 安装所有 skills 到所有支持的 Agent
+npx skills add tniuli/dotfiles-skills --all
+
+# 或安装特定 skills
+npx skills add tniuli/dotfiles-skills --skill react-best-practices --skill web-design-guidelines
+
+# 查看已安装的 skills
+npx skills list
+```
+
+### 支持的安装选项
+
+```bash
+# 安装到特定 Agent
+npx skills add tniuli/dotfiles-skills -a claude-code -a cursor
+
+# 全局安装（所有项目可用）
+npx skills add tniuli/dotfiles-skills -g
+
+# 仅安装特定 skills
+npx skills add tniuli/dotfiles-skills --skill react-best-practices --skill typescript-expert
+
+# 查看可用 skills
+npx skills add tniuli/dotfiles-skills --list
 ```
 
 ## Skills 概览
