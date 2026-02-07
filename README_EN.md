@@ -203,6 +203,7 @@ This repository integrates excellent Agent Skills from:
 - [mblode/agent-skills](https://github.com/mblode/agent-skills) - UI/Frontend quality skills
 - [blencorp/claude-code-kit](https://github.com/blencorp/claude-code-kit) - Framework kits
 - [sickn33/antigravity-awesome-skills](https://github.com/sickn33/antigravity-awesome-skills) - 200+ Agent Skills
+- [openclaw/skills](https://github.com/openclaw/skills) - Clawdhub.com archive (Huge collection)
 
 ## License
 

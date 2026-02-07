@@ -202,6 +202,7 @@ git push
 - [mblode/agent-skills](https://github.com/mblode/agent-skills) - UI/前端质量 skills
 - [blencorp/claude-code-kit](https://github.com/blencorp/claude-code-kit) - 框架 kits
 - [sickn33/antigravity-awesome-skills](https://github.com/sickn33/antigravity-awesome-skills) - 200+ Agent Skills
+- [openclaw/skills](https://github.com/openclaw/skills) - Clawdhub.com 归档（海量 Skills）
 
 ## 许可证
 
