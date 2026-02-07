@@ -7,7 +7,28 @@ description: |
 user-invocable: true
 ---
 
-# AI SDK Core
+# AI SDK Core / AI SDK 核心
+
+## Description / 描述
+Build backend AI with Vercel AI SDK v6 stable.
+使用 Vercel AI SDK v6 构建后端 AI 应用。包含 Output API、语音合成、转录、Embeddings、MCP 工具及安全指南。
+
+## Triggers / 触发条件
+- "Implement AI SDK"
+- "Fix AI_APICallError"
+- "Vercel AI SDK migration"
+- “实现 AI SDK”
+- “修复 AI_APICallError”
+- “Vercel AI SDK 迁移”
+
+## Effect / 效果
+- Provides best practices and code patterns.
+- Solves common errors.
+- 提供最佳实践和代码模式。
+- 解决常见错误。
+
+## Usage / 使用方法
+See detailed sections below. / 请参阅下方的详细章节。
 
 Backend AI with Vercel AI SDK v5 and v6.
 

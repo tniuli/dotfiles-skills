@@ -5,6 +5,7 @@
   },
   "ui-ux-pro-max": {
     "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git",
+    "path": ".claude/skills/ui-ux-pro-max",
     "branch": "main"
   },
   "brainstorming": {

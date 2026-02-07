@@ -167,6 +167,27 @@ else
 fi
 echo
 
+# List skills to be installed
+echo "----------------------------------------------------------------"
+echo "Skills to be installed / 即将安装的 Skills:"
+echo "----------------------------------------------------------------"
+if [ ${#SELECTED_SKILLS[@]} -gt 0 ]; then
+    for skill in "${SELECTED_SKILLS[@]}"; do
+        echo "  - $skill"
+    done
+else
+    find "$SKILLS_DIR" -maxdepth 1 -type d -not -path '*/.*' -not -path "$SKILLS_DIR" | sed "s|$SKILLS_DIR/|  - |" | sort
+fi
+echo "----------------------------------------------------------------"
+
+# Ask for confirmation
+read -p "Proceed with installation? / 确认安装? [Y/n] " -n 1 -r
+echo
+if [[ ! $REPLY =~ ^[Yy]$ ]] && [[ -n $REPLY ]]; then
+    echo "Installation aborted. / 安装已取消。"
+    exit 1
+fi
+
 INSTALLED_ANY=false
 
 install_skills() {
@@ -236,6 +257,19 @@ if [ "$INSTALLED_ANY" = true ]; then
     [ "$INSTALL_TRAE" = true ] && echo "  • Trae:        $TRAE_DIR"
     [ "$INSTALL_ANTIGRAVITY" = true ] && echo "  • Antigravity: $ANTIGRAVITY_DIR"
     echo
+
+    echo "----------------------------------------------------------------"
+    echo "Installed Skills List / 已安装 Skills 列表:"
+    echo "----------------------------------------------------------------"
+    if [ ${#SELECTED_SKILLS[@]} -gt 0 ]; then
+        for skill in "${SELECTED_SKILLS[@]}"; do
+            echo "  - $skill"
+        done
+    else
+        find "$SKILLS_DIR" -maxdepth 1 -type d -not -path '*/.*' -not -path "$SKILLS_DIR" | sed "s|$SKILLS_DIR/|  - |" | sort
+    fi
+    echo "----------------------------------------------------------------"
+
     echo "Restart your AI coding assistants to load the new skills."
 else
     echo "No platforms selected. Use --all or specific flags (e.g., --claude)."

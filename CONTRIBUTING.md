@@ -5,15 +5,18 @@ Thank you for your interest in contributing! We welcome new skills and improveme
 ## How to Add a New Skill
 
 1.  Create a new folder in `skills/`: `skills/my-new-skill`
-2.  Create a `SKILL.md` file in that folder. This is required.
-    - Format:
+2.  Create a `SKILL.md` file in that folder using `skills/SKILL_TEMPLATE.md`.
+    - **Requirement:** Documentation must be bilingual (English and Chinese).
+    - **Format:**
       ```markdown
       ---
       name: my-new-skill
-      description: Short description
+      description: Short description / 简短描述
       ---
-      # My New Skill
-      ... details ...
+      # My New Skill / 我的新技能
+
+      ## Description / 描述
+      ...
       ```
 3.  Add any necessary resources or scripts within that folder.
 4.  Test your skill locally.
