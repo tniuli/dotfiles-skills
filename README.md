@@ -30,6 +30,11 @@ cd ~/dotfiles-skills
 # 例如：只安装 humanizer 到 Claude
 ./install.sh --claude --skill humanizer
 
+# 从上游仓库更新 Skill
+./install.sh --update
+# 更新并安装到 Claude
+./install.sh --update --claude
+
 ./install.sh --help
 ```
 

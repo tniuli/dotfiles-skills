@@ -1,0 +1,30 @@
+{
+  "humanizer": {
+    "url": "https://github.com/blader/humanizer.git",
+    "branch": "main"
+  },
+  "ui-ux-pro-max": {
+    "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git",
+    "branch": "main"
+  },
+  "brainstorming": {
+    "url": "https://github.com/obra/superpowers.git",
+    "path": "skills/brainstorming",
+    "branch": "main"
+  },
+  "writing-plans": {
+    "url": "https://github.com/obra/superpowers.git",
+    "path": "skills/writing-plans",
+    "branch": "main"
+  },
+  "ai-sdk-core": {
+    "url": "https://github.com/vercel-labs/agent-skills.git",
+    "path": "skills/ai-sdk-core",
+    "branch": "main"
+  },
+  "ai-sdk-ui": {
+    "url": "https://github.com/vercel-labs/agent-skills.git",
+    "path": "skills/ai-sdk-ui",
+    "branch": "main"
+  }
+}

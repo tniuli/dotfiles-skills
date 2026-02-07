@@ -30,6 +30,11 @@ cd ~/dotfiles-skills
 # Example: Install only humanizer to Claude
 ./install.sh --claude --skill humanizer
 
+# Update skills from upstream repositories
+./install.sh --update
+# Update and install to Claude
+./install.sh --update --claude
+
 ./install.sh --help
 ```
 

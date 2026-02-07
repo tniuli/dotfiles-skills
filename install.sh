@@ -43,6 +43,7 @@ show_help() {
     echo "  --trae                Install to Trae IDE"
     echo "  --antigravity         Install to Google Antigravity"
     echo "  --skill <name>        Install only specific skill(s). Can be used multiple times."
+    echo "  --update              Update skills from upstream repositories before installing"
     echo "  --list                List all available skills and descriptions"
     echo "  --help                Show this help message"
     echo
@@ -85,6 +86,10 @@ while [[ $# -gt 0 ]]; do
                 echo "Error: Argument for --skill is missing" >&2
                 exit 1
             fi
+            ;;
+        --update)
+            UPDATE_SKILLS=true
+            shift
             ;;
         --list)
             if [ -f "$SCRIPT_DIR/list_skills.py" ]; then
@@ -133,6 +138,16 @@ echo
 if [ ! -d "$SKILLS_DIR" ]; then
     echo "Error: skills directory not found at $SKILLS_DIR"
     exit 1
+fi
+
+if [ "$UPDATE_SKILLS" = true ]; then
+    echo -e "${BLUE}Updating skills from upstream...${NC}"
+    if [ -f "$SCRIPT_DIR/update_skills.py" ]; then
+        "$SCRIPT_DIR/update_skills.py"
+    else
+        echo "Error: update_skills.py not found in $SCRIPT_DIR"
+    fi
+    echo
 fi
 
 # Count/Verify skills to install
