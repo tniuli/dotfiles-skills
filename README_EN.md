@@ -127,6 +127,7 @@ npx skills add tniuli/dotfiles-skills --list
 | `pdf` | PDF processing |
 | `pptx` | PowerPoint processing |
 | `xlsx` | Excel processing |
+| `humanizer` | AI text humanizer |
 
 ### Creative
 
@@ -206,6 +207,7 @@ This repository integrates excellent Agent Skills from:
 - [sickn33/antigravity-awesome-skills](https://github.com/sickn33/antigravity-awesome-skills) - 200+ Agent Skills
 - [openclaw/skills](https://github.com/openclaw/skills) - Clawdhub.com archive (Huge collection)
 - [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) - UI/UX Design Intelligence Skill
+- [blader/humanizer](https://github.com/blader/humanizer) - Text humanizer Skill
 
 ## License
 

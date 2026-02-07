@@ -127,6 +127,7 @@ npx skills add tniuli/dotfiles-skills --list
 | `pdf` | PDF 处理 |
 | `pptx` | PowerPoint 处理 |
 | `xlsx` | Excel 处理 |
+| `humanizer` | 文本去 AI 化与润色 |
 
 ### 创意设计 (Creative)
 
@@ -205,6 +206,7 @@ git push
 - [sickn33/antigravity-awesome-skills](https://github.com/sickn33/antigravity-awesome-skills) - 200+ Agent Skills
 - [openclaw/skills](https://github.com/openclaw/skills) - Clawdhub.com 归档（海量 Skills）
 - [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) - UI/UX 设计智能 Skill
+- [blader/humanizer](https://github.com/blader/humanizer) - 文本去 AI 化 Skill
 
 ## 许可证
 
