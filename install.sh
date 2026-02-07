@@ -20,6 +20,80 @@ BLUE='\033[0;34m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
+# Default flags (install all if no specific platform requested)
+INSTALL_CLAUDE=false
+INSTALL_CODEX=false
+INSTALL_CURSOR=false
+INSTALL_TRAE=false
+INSTALL_ANTIGRAVITY=false
+INSTALL_ALL=false
+
+# Help function
+show_help() {
+    echo "Usage: ./install.sh [OPTIONS]"
+    echo
+    echo "Options:"
+    echo "  --all          Install to all platforms (default if no options provided)"
+    echo "  --claude       Install to Claude Code"
+    echo "  --codex        Install to Codex CLI"
+    echo "  --cursor       Install to Cursor"
+    echo "  --trae         Install to Trae IDE"
+    echo "  --antigravity  Install to Google Antigravity"
+    echo "  --help         Show this help message"
+    echo
+}
+
+# Parse arguments
+if [ $# -eq 0 ]; then
+    INSTALL_ALL=true
+else
+    for arg in "$@"; do
+        case $arg in
+            --all)
+                INSTALL_ALL=true
+                shift
+                ;;
+            --claude)
+                INSTALL_CLAUDE=true
+                shift
+                ;;
+            --codex)
+                INSTALL_CODEX=true
+                shift
+                ;;
+            --cursor)
+                INSTALL_CURSOR=true
+                shift
+                ;;
+            --trae)
+                INSTALL_TRAE=true
+                shift
+                ;;
+            --antigravity)
+                INSTALL_ANTIGRAVITY=true
+                shift
+                ;;
+            --help)
+                show_help
+                exit 0
+                ;;
+            *)
+                echo "Unknown option: $arg"
+                show_help
+                exit 1
+                ;;
+        esac
+    done
+fi
+
+if [ "$INSTALL_ALL" = true ]; then
+    INSTALL_CLAUDE=true
+    INSTALL_CODEX=true
+    INSTALL_CURSOR=true
+    INSTALL_TRAE=true
+    INSTALL_ANTIGRAVITY=true
+fi
+
 echo -e "${BLUE}╔════════════════════════════════════════════╗${NC}"
 echo -e "${BLUE}║     Agent Skills Installer                 ║${NC}"
 echo -e "${BLUE}╚════════════════════════════════════════════╝${NC}"
@@ -38,46 +112,68 @@ SKILL_COUNT=$((SKILL_COUNT - 1))  # Subtract 1 for the skills directory itself
 echo -e "${YELLOW}Found ${SKILL_COUNT} skills to install${NC}"
 echo
 
+INSTALLED_ANY=false
+
 # Install to Claude
-echo -e "${GREEN}[1/5]${NC} Installing to Claude (~/.claude/skills/)..."
-mkdir -p "$CLAUDE_DIR"
-rsync -av --delete --exclude='.DS_Store' "$SKILLS_DIR/" "$CLAUDE_DIR/" > /dev/null
-echo "      ✓ Done"
+if [ "$INSTALL_CLAUDE" = true ]; then
+    echo -e "${GREEN}Installing to Claude (~/.claude/skills/)...${NC}"
+    mkdir -p "$CLAUDE_DIR"
+    rsync -av --delete --exclude='.DS_Store' "$SKILLS_DIR/" "$CLAUDE_DIR/" > /dev/null
+    echo "  ✓ Done"
+    INSTALLED_ANY=true
+fi
 
 # Install to Codex
-echo -e "${GREEN}[2/5]${NC} Installing to Codex (~/.codex/skills/)..."
-mkdir -p "$CODEX_DIR"
-rsync -av --delete --exclude='.DS_Store' --exclude='.system' "$SKILLS_DIR/" "$CODEX_DIR/" > /dev/null
-echo "      ✓ Done"
+if [ "$INSTALL_CODEX" = true ]; then
+    echo -e "${GREEN}Installing to Codex (~/.codex/skills/)...${NC}"
+    mkdir -p "$CODEX_DIR"
+    rsync -av --delete --exclude='.DS_Store' --exclude='.system' "$SKILLS_DIR/" "$CODEX_DIR/" > /dev/null
+    echo "  ✓ Done"
+    INSTALLED_ANY=true
+fi
 
 # Install to Cursor
-echo -e "${GREEN}[3/5]${NC} Installing to Cursor (~/.cursor/skills/)..."
-mkdir -p "$CURSOR_DIR"
-rsync -av --delete --exclude='.DS_Store' "$SKILLS_DIR/" "$CURSOR_DIR/" > /dev/null
-echo "      ✓ Done"
+if [ "$INSTALL_CURSOR" = true ]; then
+    echo -e "${GREEN}Installing to Cursor (~/.cursor/skills/)...${NC}"
+    mkdir -p "$CURSOR_DIR"
+    rsync -av --delete --exclude='.DS_Store' "$SKILLS_DIR/" "$CURSOR_DIR/" > /dev/null
+    echo "  ✓ Done"
+    INSTALLED_ANY=true
+fi
 
 # Install to Trae
-echo -e "${GREEN}[4/5]${NC} Installing to Trae (~/.trae/skills/)..."
-mkdir -p "$TRAE_DIR"
-rsync -av --delete --exclude='.DS_Store' "$SKILLS_DIR/" "$TRAE_DIR/" > /dev/null
-echo "      ✓ Done"
+if [ "$INSTALL_TRAE" = true ]; then
+    echo -e "${GREEN}Installing to Trae (~/.trae/skills/)...${NC}"
+    mkdir -p "$TRAE_DIR"
+    rsync -av --delete --exclude='.DS_Store' "$SKILLS_DIR/" "$TRAE_DIR/" > /dev/null
+    echo "  ✓ Done"
+    INSTALLED_ANY=true
+fi
 
 # Install to Antigravity
-echo -e "${GREEN}[5/5]${NC} Installing to Antigravity (~/.gemini/antigravity/skills/)..."
-mkdir -p "$ANTIGRAVITY_DIR"
-rsync -av --delete --exclude='.DS_Store' "$SKILLS_DIR/" "$ANTIGRAVITY_DIR/" > /dev/null
-echo "      ✓ Done"
+if [ "$INSTALL_ANTIGRAVITY" = true ]; then
+    echo -e "${GREEN}Installing to Antigravity (~/.gemini/antigravity/skills/)...${NC}"
+    mkdir -p "$ANTIGRAVITY_DIR"
+    rsync -av --delete --exclude='.DS_Store' "$SKILLS_DIR/" "$ANTIGRAVITY_DIR/" > /dev/null
+    echo "  ✓ Done"
+    INSTALLED_ANY=true
+fi
 
-echo
-echo -e "${GREEN}════════════════════════════════════════════${NC}"
-echo -e "${GREEN}Installation complete!${NC}"
-echo -e "${GREEN}════════════════════════════════════════════${NC}"
-echo
-echo "Skills installed to:"
-echo "  • Claude:      $CLAUDE_DIR"
-echo "  • Codex:       $CODEX_DIR"
-echo "  • Cursor:      $CURSOR_DIR"
-echo "  • Trae:        $TRAE_DIR"
-echo "  • Antigravity: $ANTIGRAVITY_DIR"
-echo
-echo "Restart your AI coding assistants to load the new skills."
+if [ "$INSTALLED_ANY" = true ]; then
+    echo
+    echo -e "${GREEN}════════════════════════════════════════════${NC}"
+    echo -e "${GREEN}Installation complete!${NC}"
+    echo -e "${GREEN}════════════════════════════════════════════${NC}"
+    echo
+    echo "Skills installed to:"
+    [ "$INSTALL_CLAUDE" = true ] && echo "  • Claude:      $CLAUDE_DIR"
+    [ "$INSTALL_CODEX" = true ] && echo "  • Codex:       $CODEX_DIR"
+    [ "$INSTALL_CURSOR" = true ] && echo "  • Cursor:      $CURSOR_DIR"
+    [ "$INSTALL_TRAE" = true ] && echo "  • Trae:        $TRAE_DIR"
+    [ "$INSTALL_ANTIGRAVITY" = true ] && echo "  • Antigravity: $ANTIGRAVITY_DIR"
+    echo
+    echo "Restart your AI coding assistants to load the new skills."
+else
+    echo "No platforms selected. Use --all or specific flags (e.g., --claude)."
+    show_help
+fi

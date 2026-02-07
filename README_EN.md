@@ -11,7 +11,14 @@ Professional collection of Agent Skills for Claude Code, Codex CLI, Cursor, Trae
 ```bash
 git clone git@github.com:tniuli/dotfiles-skills.git ~/dotfiles-skills
 cd ~/dotfiles-skills
+
+# Install to all platforms (default)
 ./install.sh
+
+# Or install to specific platforms
+./install.sh --claude
+./install.sh --trae --cursor
+./install.sh --help
 ```
 
 ### Method 2: Using Skills CLI

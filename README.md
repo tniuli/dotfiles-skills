@@ -11,7 +11,14 @@
 ```bash
 git clone git@github.com:tniuli/dotfiles-skills.git ~/dotfiles-skills
 cd ~/dotfiles-skills
+
+# 安装到所有平台（默认）
 ./install.sh
+
+# 或指定安装平台
+./install.sh --claude
+./install.sh --trae --cursor
+./install.sh --help
 ```
 
 ### 方法二：使用 Skills CLI
