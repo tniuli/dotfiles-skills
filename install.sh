@@ -39,6 +39,7 @@ show_help() {
     echo "  --cursor       Install to Cursor"
     echo "  --trae         Install to Trae IDE"
     echo "  --antigravity  Install to Google Antigravity"
+    echo "  --list         List all available skills and descriptions"
     echo "  --help         Show this help message"
     echo
 }
@@ -72,6 +73,14 @@ else
             --antigravity)
                 INSTALL_ANTIGRAVITY=true
                 shift
+                ;;
+            --list)
+                if [ -f "$SCRIPT_DIR/list_skills.py" ]; then
+                    "$SCRIPT_DIR/list_skills.py"
+                else
+                    echo "Error: list_skills.py not found in $SCRIPT_DIR"
+                fi
+                exit 0
                 ;;
             --help)
                 show_help

@@ -18,6 +18,10 @@ cd ~/dotfiles-skills
 # 或指定安装平台
 ./install.sh --claude
 ./install.sh --trae --cursor
+
+# 查看所有可用 Skills
+./install.sh --list
+
 ./install.sh --help
 ```
 

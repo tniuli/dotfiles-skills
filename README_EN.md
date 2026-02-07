@@ -18,6 +18,10 @@ cd ~/dotfiles-skills
 # Or install to specific platforms
 ./install.sh --claude
 ./install.sh --trae --cursor
+
+# List all available skills
+./install.sh --list
+
 ./install.sh --help
 ```
 
