@@ -22,6 +22,11 @@ cd ~/dotfiles-skills
 # List all available skills
 ./install.sh --list
 
+# Install specific skill(s)
+./install.sh --skill <skill_name>
+# Example: Install only humanizer to Claude
+./install.sh --claude --skill humanizer
+
 ./install.sh --help
 ```
 

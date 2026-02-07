@@ -28,71 +28,92 @@ INSTALL_TRAE=false
 INSTALL_ANTIGRAVITY=false
 INSTALL_ALL=false
 
+# Selected skills (empty means all)
+SELECTED_SKILLS=()
+
 # Help function
 show_help() {
     echo "Usage: ./install.sh [OPTIONS]"
     echo
     echo "Options:"
-    echo "  --all          Install to all platforms (default if no options provided)"
-    echo "  --claude       Install to Claude Code"
-    echo "  --codex        Install to Codex CLI"
-    echo "  --cursor       Install to Cursor"
-    echo "  --trae         Install to Trae IDE"
-    echo "  --antigravity  Install to Google Antigravity"
-    echo "  --list         List all available skills and descriptions"
-    echo "  --help         Show this help message"
+    echo "  --all                 Install to all platforms (default if no options provided)"
+    echo "  --claude              Install to Claude Code"
+    echo "  --codex               Install to Codex CLI"
+    echo "  --cursor              Install to Cursor"
+    echo "  --trae                Install to Trae IDE"
+    echo "  --antigravity         Install to Google Antigravity"
+    echo "  --skill <name>        Install only specific skill(s). Can be used multiple times."
+    echo "  --list                List all available skills and descriptions"
+    echo "  --help                Show this help message"
     echo
 }
 
 # Parse arguments
-if [ $# -eq 0 ]; then
-    INSTALL_ALL=true
-else
-    for arg in "$@"; do
-        case $arg in
-            --all)
-                INSTALL_ALL=true
+while [[ $# -gt 0 ]]; do
+    key="$1"
+    case $key in
+        --all)
+            INSTALL_ALL=true
+            shift
+            ;;
+        --claude)
+            INSTALL_CLAUDE=true
+            shift
+            ;;
+        --codex)
+            INSTALL_CODEX=true
+            shift
+            ;;
+        --cursor)
+            INSTALL_CURSOR=true
+            shift
+            ;;
+        --trae)
+            INSTALL_TRAE=true
+            shift
+            ;;
+        --antigravity)
+            INSTALL_ANTIGRAVITY=true
+            shift
+            ;;
+        --skill)
+            if [ -n "$2" ] && [ "${2:0:1}" != "-" ]; then
+                SELECTED_SKILLS+=("$2")
                 shift
-                ;;
-            --claude)
-                INSTALL_CLAUDE=true
                 shift
-                ;;
-            --codex)
-                INSTALL_CODEX=true
-                shift
-                ;;
-            --cursor)
-                INSTALL_CURSOR=true
-                shift
-                ;;
-            --trae)
-                INSTALL_TRAE=true
-                shift
-                ;;
-            --antigravity)
-                INSTALL_ANTIGRAVITY=true
-                shift
-                ;;
-            --list)
-                if [ -f "$SCRIPT_DIR/list_skills.py" ]; then
-                    "$SCRIPT_DIR/list_skills.py"
-                else
-                    echo "Error: list_skills.py not found in $SCRIPT_DIR"
-                fi
-                exit 0
-                ;;
-            --help)
-                show_help
-                exit 0
-                ;;
-            *)
-                echo "Unknown option: $arg"
-                show_help
+            else
+                echo "Error: Argument for --skill is missing" >&2
                 exit 1
-                ;;
-        esac
-    done
+            fi
+            ;;
+        --list)
+            if [ -f "$SCRIPT_DIR/list_skills.py" ]; then
+                "$SCRIPT_DIR/list_skills.py"
+            else
+                echo "Error: list_skills.py not found in $SCRIPT_DIR"
+            fi
+            exit 0
+            ;;
+        --help)
+            show_help
+            exit 0
+            ;;
+        *)
+            echo "Unknown option: $key"
+            show_help
+            exit 1
+            ;;
+    esac
+done
+
+# If no platform flags were set, default to ALL
+if [ "$INSTALL_CLAUDE" = false ] && \
+   [ "$INSTALL_CODEX" = false ] && \
+   [ "$INSTALL_CURSOR" = false ] && \
+   [ "$INSTALL_TRAE" = false ] && \
+   [ "$INSTALL_ANTIGRAVITY" = false ] && \
+   [ "$INSTALL_ALL" = false ]; then
+    INSTALL_ALL=true
 fi
 
 if [ "$INSTALL_ALL" = true ]; then
@@ -114,57 +135,76 @@ if [ ! -d "$SKILLS_DIR" ]; then
     exit 1
 fi
 
-# Count skills
-SKILL_COUNT=$(find "$SKILLS_DIR" -maxdepth 1 -type d | wc -l)
-SKILL_COUNT=$((SKILL_COUNT - 1))  # Subtract 1 for the skills directory itself
-
-echo -e "${YELLOW}Found ${SKILL_COUNT} skills to install${NC}"
+# Count/Verify skills to install
+if [ ${#SELECTED_SKILLS[@]} -gt 0 ]; then
+    echo -e "${YELLOW}Selected ${#SELECTED_SKILLS[@]} specific skills to install:${NC}"
+    for skill in "${SELECTED_SKILLS[@]}"; do
+        if [ ! -d "$SKILLS_DIR/$skill" ]; then
+            echo "Error: Skill '$skill' not found in $SKILLS_DIR"
+            exit 1
+        fi
+        echo "  - $skill"
+    done
+else
+    SKILL_COUNT=$(find "$SKILLS_DIR" -maxdepth 1 -type d | wc -l)
+    SKILL_COUNT=$((SKILL_COUNT - 1))
+    echo -e "${YELLOW}Installing ALL ${SKILL_COUNT} available skills${NC}"
+fi
 echo
 
 INSTALLED_ANY=false
 
+install_skills() {
+    local target_dir="$1"
+    local platform_name="$2"
+    local exclude_system="$3"
+    
+    echo -e "${GREEN}Installing to $platform_name ($target_dir)...${NC}"
+    mkdir -p "$target_dir"
+    
+    if [ ${#SELECTED_SKILLS[@]} -eq 0 ]; then
+        # Install all
+        if [ "$exclude_system" = "true" ]; then
+            rsync -av --delete --exclude='.DS_Store' --exclude='.system' "$SKILLS_DIR/" "$target_dir/" > /dev/null
+        else
+            rsync -av --delete --exclude='.DS_Store' "$SKILLS_DIR/" "$target_dir/" > /dev/null
+        fi
+    else
+        # Install specific skills
+        for skill in "${SELECTED_SKILLS[@]}"; do
+            rsync -av --exclude='.DS_Store' "$SKILLS_DIR/$skill" "$target_dir/" > /dev/null
+        done
+    fi
+    echo "  ✓ Done"
+}
+
 # Install to Claude
 if [ "$INSTALL_CLAUDE" = true ]; then
-    echo -e "${GREEN}Installing to Claude (~/.claude/skills/)...${NC}"
-    mkdir -p "$CLAUDE_DIR"
-    rsync -av --delete --exclude='.DS_Store' "$SKILLS_DIR/" "$CLAUDE_DIR/" > /dev/null
-    echo "  ✓ Done"
+    install_skills "$CLAUDE_DIR" "Claude" "false"
     INSTALLED_ANY=true
 fi
 
 # Install to Codex
 if [ "$INSTALL_CODEX" = true ]; then
-    echo -e "${GREEN}Installing to Codex (~/.codex/skills/)...${NC}"
-    mkdir -p "$CODEX_DIR"
-    rsync -av --delete --exclude='.DS_Store' --exclude='.system' "$SKILLS_DIR/" "$CODEX_DIR/" > /dev/null
-    echo "  ✓ Done"
+    install_skills "$CODEX_DIR" "Codex" "true"
     INSTALLED_ANY=true
 fi
 
 # Install to Cursor
 if [ "$INSTALL_CURSOR" = true ]; then
-    echo -e "${GREEN}Installing to Cursor (~/.cursor/skills/)...${NC}"
-    mkdir -p "$CURSOR_DIR"
-    rsync -av --delete --exclude='.DS_Store' "$SKILLS_DIR/" "$CURSOR_DIR/" > /dev/null
-    echo "  ✓ Done"
+    install_skills "$CURSOR_DIR" "Cursor" "false"
     INSTALLED_ANY=true
 fi
 
 # Install to Trae
 if [ "$INSTALL_TRAE" = true ]; then
-    echo -e "${GREEN}Installing to Trae (~/.trae/skills/)...${NC}"
-    mkdir -p "$TRAE_DIR"
-    rsync -av --delete --exclude='.DS_Store' "$SKILLS_DIR/" "$TRAE_DIR/" > /dev/null
-    echo "  ✓ Done"
+    install_skills "$TRAE_DIR" "Trae" "false"
     INSTALLED_ANY=true
 fi
 
 # Install to Antigravity
 if [ "$INSTALL_ANTIGRAVITY" = true ]; then
-    echo -e "${GREEN}Installing to Antigravity (~/.gemini/antigravity/skills/)...${NC}"
-    mkdir -p "$ANTIGRAVITY_DIR"
-    rsync -av --delete --exclude='.DS_Store' "$SKILLS_DIR/" "$ANTIGRAVITY_DIR/" > /dev/null
-    echo "  ✓ Done"
+    install_skills "$ANTIGRAVITY_DIR" "Antigravity" "false"
     INSTALLED_ANY=true
 fi
 

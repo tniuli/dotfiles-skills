@@ -22,6 +22,11 @@ cd ~/dotfiles-skills
 # 查看所有可用 Skills
 ./install.sh --list
 
+# 安装特定 Skill
+./install.sh --skill <skill_name>
+# 例如：只安装 humanizer 到 Claude
+./install.sh --claude --skill humanizer
+
 ./install.sh --help
 ```
 
