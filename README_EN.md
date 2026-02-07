@@ -99,6 +99,25 @@ npx skills add tniuli/dotfiles-skills --list
 | `ai-sdk-core` | Vercel AI SDK v5 core |
 | `ai-sdk-ui` | Vercel AI SDK UI components |
 
+### Superpowers Workflow
+
+| Skill | Description |
+|-------|-------------|
+| `using-superpowers` | Introduction to Superpowers system |
+| `brainstorming` | Idea refinement and design discussion |
+| `writing-plans` | Create detailed implementation plans |
+| `executing-plans` | Batch execution of tasks |
+| `subagent-driven-development` | Sub-agent driven development (TDD) |
+| `test-driven-development` | Red-Green-Refactor cycle |
+| `systematic-debugging` | Root Cause Analysis process |
+| `verification-before-completion` | Verification checklist |
+| `requesting-code-review` | Pre-review checklist |
+| `receiving-code-review` | Handling review feedback |
+| `using-git-worktrees` | Parallel development with worktrees |
+| `finishing-a-development-branch` | Merge/PR workflow |
+| `dispatching-parallel-agents` | Concurrent task dispatching |
+| `writing-skills` | Guide for creating new skills |
+
 ### DevTools
 
 | Skill | Description |
@@ -208,6 +227,7 @@ This repository integrates excellent Agent Skills from:
 - [openclaw/skills](https://github.com/openclaw/skills) - Clawdhub.com archive (Huge collection)
 - [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) - UI/UX Design Intelligence Skill
 - [blader/humanizer](https://github.com/blader/humanizer) - Text humanizer Skill
+- [obra/superpowers](https://github.com/obra/superpowers) - Complete software development workflow
 
 ## License
 

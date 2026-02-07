@@ -99,6 +99,25 @@ npx skills add tniuli/dotfiles-skills --list
 | `ai-sdk-core` | Vercel AI SDK v5 核心 |
 | `ai-sdk-ui` | Vercel AI SDK UI 组件 |
 
+### Superpowers 工作流 (Workflow)
+
+| Skill | 描述 |
+|-------|------|
+| `using-superpowers` | Superpowers 系统介绍 |
+| `brainstorming` | 创意构思与设计讨论 |
+| `writing-plans` | 编写详细实施计划 |
+| `executing-plans` | 批量执行开发任务 |
+| `subagent-driven-development` | 子 Agent 驱动开发（TDD） |
+| `test-driven-development` | 测试驱动开发循环 (Red-Green-Refactor) |
+| `systematic-debugging` | 系统化调试 (Root Cause Analysis) |
+| `verification-before-completion` | 完成前验证 |
+| `requesting-code-review` | 请求代码审查 |
+| `receiving-code-review` | 处理代码审查反馈 |
+| `using-git-worktrees` | 使用 Git Worktrees 并行开发 |
+| `finishing-a-development-branch` | 完成开发分支流程 |
+| `dispatching-parallel-agents` | 并行任务分发 |
+| `writing-skills` | 创建新 Skill 指南 |
+
 ### 开发工具 (DevTools)
 
 | Skill | 描述 |
@@ -207,6 +226,7 @@ git push
 - [openclaw/skills](https://github.com/openclaw/skills) - Clawdhub.com 归档（海量 Skills）
 - [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) - UI/UX 设计智能 Skill
 - [blader/humanizer](https://github.com/blader/humanizer) - 文本去 AI 化 Skill
+- [obra/superpowers](https://github.com/obra/superpowers) - 完整的 Agent 软件开发工作流
 
 ## 许可证
 
