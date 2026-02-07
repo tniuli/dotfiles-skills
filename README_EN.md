@@ -2,7 +2,7 @@
 
 [中文](./README.md) | English
 
-Personal collection of Agent Skills for Claude Code, Codex CLI, Cursor, Trae IDE, and Google Antigravity.
+Professional collection of Agent Skills for Claude Code, Codex CLI, Cursor, Trae IDE, and Google Antigravity.
 
 ## Quick Install
 

@@ -2,7 +2,7 @@
 
 中文 | [English](./README_EN.md)
 
-个人 Agent Skills 集合，用于 Claude Code、Codex CLI、Cursor、Trae IDE 和 Google Antigravity。
+专业 Agent Skills 集合，用于 Claude Code、Codex CLI、Cursor、Trae IDE 和 Google Antigravity。
 
 ## 快速安装
 

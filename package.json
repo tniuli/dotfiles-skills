@@ -1,7 +1,7 @@
 {
   "name": "dotfiles-skills",
   "version": "1.0.0",
-  "description": "Personal collection of AI agent skills with installation scripts",
+  "description": "Professional collection of AI agent skills with installation scripts",
   "main": "install.sh",
   "scripts": {
     "install": "./install.sh",
