@@ -1,5 +1,8 @@
 # dotfiles-skills
 
+![License](https://img.shields.io/github/license/tniuli/dotfiles-skills)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+
 [中文](./README.md) | English
 
 Professional collection of Agent Skills for Claude Code, Codex CLI, Cursor, Trae IDE, and Google Antigravity.
@@ -229,6 +232,11 @@ git add .
 git commit -m "feat: add my-new-skill"
 git push
 ```
+
+## Contributing & Community
+
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) to learn how to add new skills.
+This project follows our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Sources
 
